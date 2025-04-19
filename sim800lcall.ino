@@ -20,13 +20,11 @@ void setup() {
     delay(200);
     gsm.println("AT+CNMI=1,2,0,0,0");   //AT+CNMI=1,2,0,0,0
     delay(200);
-  //Sim800l.begin();
 
-  //error = Sim800l.delAllSms();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  
  if(gsm.available())
  {
     txt1 = gsm.readString();
@@ -34,11 +32,10 @@ void loop() {
 
       String number = txt1.substring(18,31);
       Serial.println("FROM=>"+number);
-    if(number == "+989900207639")
+    if(number == "YOUR NUMBER")
     {
       gsm.println("ATA");
       delay(2000);
-    //return;
     }
     else
     {
@@ -49,8 +46,7 @@ void loop() {
     if(Serial.available())
   {
     txt2 = Serial.readString();
-    //gsm.println("AT+CMGS=\"09137392795\"");
-    gsm.println("AT+CMGS=\"09137392795\"");
+    gsm.println("AT+CMGS=\"YOUR NUMBER\"");
     delay(200);
     gsm.println(txt2);
     delay(200);
